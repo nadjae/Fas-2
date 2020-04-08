@@ -4,5 +4,5 @@ void setup(){
 
 void draw(){
 textAlign(CENTER);
-text("Djurgårdens IF - Längsta mästarna", hight/2, width/2);
+text("Djurgårdens IF - Längsta mästarna", height/2, width/2);
 }
