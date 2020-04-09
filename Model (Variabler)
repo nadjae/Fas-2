@@ -1,0 +1,9 @@
+// ALLA VARIABLER FÖR SYSTEMET
+
+int state = 0;
+int textSize = 20;
+
+// Nya variabler från föregående exempel
+long startTime;
+long splashTime = 3000; // milli-seconds
+
