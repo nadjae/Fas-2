@@ -1,9 +1,32 @@
 void setup(){
-  size(20, 40);
+  size( 1280, 720 );
+  startTime = System.currentTimeMillis();
 }
 
 void draw(){
-textAlign(CENTER);
-text("Djurgårdens IF - Längsta mästarna", height/2, width/2);
-text("^^SUGER^^", height/2 - 20, width/2);
+  // Kontrollera om Splash screenen visats tillräckligt länge. Isf byt tillstånd.
+  long now = System.currentTimeMillis();
+  boolean endSplashState = now > ( startTime + splashTime );
+  if( state == 0 && endSplashState ){
+    state = 1;
+  }
+  
+  
+  switch( state ){
+    case 0:
+      //drawSplashScreen();
+      //ETT ANNAT TILLSTÅND/METOD
+      break;
+    case 1:
+      //drawUI();
+      //ETT ANNAT TILLSTÅND/METOD
+      break;
+    case 2:
+      exit();
+      break;
+  }
+}
+
+void mousePressed(){
+ state += 1; 
 }
