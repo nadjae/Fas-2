@@ -1,0 +1,16 @@
+// ALLA TILLSTÅND/METODER
+
+void drawSplashScreen(){
+  background( 128 );
+  
+  textSize( textSize );
+  textAlign( CENTER );
+  
+  text( "Splash screen", width/2, height/2 );
+}
+
+void drawUI(){
+  background( 255 );
+  strokeWeight( 10 );
+  ellipse( mouseX, mouseY, 25, 25 );
+}
