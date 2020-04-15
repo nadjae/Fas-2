@@ -4,7 +4,7 @@
 // https://processing.org/reference/libraries/video/  
 // Denna fil fungerar som Controller
 
-
+//Hej
 import processing.video.*;
 
 void setup() {
