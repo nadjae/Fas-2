@@ -1,32 +1,126 @@
-void setup(){
-  size( 1280, 720 );
-  startTime = System.currentTimeMillis();
+
+void setup() {
+  size (1100, 700);
+  init();
+  nowPlaying = videos[videoState];
+  nowPlaying.play();
 }
 
-void draw(){
-  // Kontrollera om Splash screenen visats tillräckligt länge. Isf byt tillstånd.
-  long now = System.currentTimeMillis();
-  boolean endSplashState = now > ( startTime + splashTime );
-  if( state == 0 && endSplashState ){
-    state = 1;
+void draw() {
+  
+  switch(programState){
+  case 0:
+    introUI();
+    break;
+  case 1:
+    background(255);
+    
+    // Kontrollerar om videon visat filmens sista bildruta (och därigenom har stannat) 
+    float md = nowPlaying.duration();
+    float mt = nowPlaying.time();
+    if ( mt >= md ) {
+      isPlaying = false;
+    }
+    
+    showVideo();
+    drawUI();
+    if (isPlaying == true) {
+      pauseButton();
+    } else playButton();
+
+    break;
+  case 2:
+    exit();
+    break;
+  }  
+}
+
+void mousePressed() {
+  
+  if(programState == 0){
+    programState=1;
+  }
+  else if(programState==1){
+    // Kontroll om klicket är inanför cirkel A:s yta
+    float d = dist( mouseX, mouseY, buttonX, buttonY1);
+    if ( d < 25 ) {
+          videoState = 0;
+          nowPlaying = videos[videoState];
+        nowPlaying.jump(0);
+        nowPlaying.play();
+          isPlaying = true;
+     
+      if ( debug ) println("A; v = " + videoState );
+    }
+  
+    // Kontroll om klicket är inanför cirkel B:s yta
+    d = dist( mouseX, mouseY, buttonX, buttonY2 );
+    if (d < 25) {
+      
+        videoState = 1;
+        nowPlaying = videos[videoState];
+        nowPlaying.jump(0);
+        nowPlaying.play();
+        isPlaying = true;
+      
+      if ( debug ) println( "B; v = " + videoState );
+    }
+    
+    // Kontroll om klicket är inanför cirkel C:s yta
+    d = dist( mouseX, mouseY, buttonX, buttonY3 );
+    if ( d < 25 ) {
+        videoState = 2;
+        nowPlaying = videos[videoState];
+        nowPlaying.jump(0);
+        nowPlaying.play();
+        isPlaying = true;
+      
+      if ( debug ) println( "C; v = " + videoState );
+    }
+    
+    // Kontroll om klicket är inanför cirkel D:s yta 
+    d = dist( mouseX, mouseY, buttonX, buttonY4);
+    if (d < 25) {
+        videoState = 3;
+        nowPlaying = videos[videoState];
+        nowPlaying.jump(0);
+        nowPlaying.play();
+        isPlaying = true;
+
+      if ( debug ) println( "D; v = " + videoState );
+    }
   }
   
+  else if( programState==3){
+    return;
+  }
   
-  switch( state ){
-    case 0:
-      //drawSplashScreen();
-      //ETT ANNAT TILLSTÅND/METOD
-      break;
-    case 1:
-      //drawUI();
-      //ETT ANNAT TILLSTÅND/METOD
-      break;
-    case 2:
-      exit();
-      break;
+    if (isPlaying == true) {
+    float d = dist( mouseX, mouseY, playX, playY);
+    if (d < 25) {
+      nowPlaying.pause();
+      isPlaying = false;
+    }
+  } else if (isPlaying == false) {
+    float d = dist( mouseX, mouseY, playX, playY);
+    if (d < 25) {
+      nowPlaying.play();
+      isPlaying = true;
+    }
+  }
+  
+  float md = nowPlaying.duration();
+  float mt = nowPlaying.time();
+  if (mt >= md) {
+    float d = dist( mouseX, mouseY, playX, playY);
+    if (d < 25) {
+     nowPlaying.jump(0);
+     nowPlaying.play();
+     isPlaying = true;
+    }
   }
 }
 
-void mousePressed(){
- state += 1; 
+void movieEvent(Movie m) {
+  m.read();
 }
