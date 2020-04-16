@@ -98,6 +98,25 @@ void mousePressed() {
 
       if ( debug ) println( "D; v = " + videoState );
     }
+    
+    //pause-knapp
+    d = dist( mouseX, mouseY, buttonX-550, buttonY1+355);
+    if (d < 25) {
+        videos[videoState].pause();
+        isPlaying = false;
+
+      if ( debug ) println( "D; v = " + "pause" );
+    }
+    
+    //play-knapp
+    d = dist( mouseX, mouseY, buttonX-500, buttonY1+355);
+    if (d < 25) {
+        videos[videoState].play();
+        isPlaying = true;
+
+      if ( debug ) println( "D; v = " + "play" );
+    }
+    
   }
   
   else if( programState==3){

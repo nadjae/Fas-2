@@ -25,18 +25,23 @@ void drawUI(){
   println(buttonX,buttonX,buttonX,buttonX,buttonY1);
   println(mouseX,mouseY);
   
+  ellipse( buttonX-550, buttonY1+355, 50, 50 );
+  ellipse( buttonX-500, buttonY1+355, 50, 50 );
+  
   // Rita ut text på aktiva knappar
   textSize( 16 );
   textAlign( CENTER );
-  //text( videos[v].filename, width/2, 32 );
+ 
   text( "Gör ditt val!", width/2, 32 );
-  
+    
   //Knappmarkörer
   strokeWeight( 1 );
   textSize( 20 );
   textAlign( CENTER );
 
-
+    text("PAUSE", buttonX-550, buttonY1+363);
+    text("PLAY", buttonX-500, buttonY1+363);
+    
     text( "A", buttonX, buttonY1 + 8 );
 
     text( "B", buttonX, buttonY2 + 8 );
