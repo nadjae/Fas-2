@@ -109,7 +109,7 @@ void mousePressed() {
     }
     
     //play-knapp
-    d = dist( mouseX, mouseY, buttonX-500, buttonY1+355);
+    d = dist( mouseX, mouseY, buttonX-480, buttonY1+355);
     if (d < 25) {
         videos[videoState].play();
         isPlaying = true;

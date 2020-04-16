@@ -26,7 +26,7 @@ void drawUI(){
   println(mouseX,mouseY);
   
   ellipse( buttonX-550, buttonY1+355, 50, 50 );
-  ellipse( buttonX-500, buttonY1+355, 50, 50 );
+  ellipse( buttonX-480, buttonY1+355, 50, 50 );
   
   // Rita ut text på aktiva knappar
   textSize( 16 );
@@ -40,7 +40,7 @@ void drawUI(){
   textAlign( CENTER );
 
     text("PAUSE", buttonX-550, buttonY1+363);
-    text("PLAY", buttonX-500, buttonY1+363);
+    text("PLAY", buttonX-480, buttonY1+363);
     
     text( "A", buttonX, buttonY1 + 8 );
 
