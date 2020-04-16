@@ -1,9 +1,51 @@
 // ALLA VARIABLER FÖR SYSTEMET
 
-int state = 0;
-int textSize = 20;
+import processing.video.*;
 
-// Nya variabler från föregående exempel
-long startTime;
-long splashTime = 3000; // milli-seconds
+Movie[] videos = new Movie[5];
+PImage [] images = new PImage [5];
+PImage play;
+PImage pause;
+boolean isPlaying = true;
+boolean debug = true;
+Movie nowPlaying;
 
+
+int buttonY1 = 150;
+int buttonY2 = 280;
+int buttonY3 = 415;
+int buttonY4 = 550;
+int buttonX = 900;
+
+PImage kaffe;
+PImage dans;
+PImage dice1;
+PImage dice2;
+PImage stol;
+
+int playY = 620;
+int playX = 60;
+
+int programState = 0;
+int videoState = 0;
+int r, g, b;
+
+PImage frame1;
+
+void init(){
+  r = 0;
+  g = 0;
+  b = 0;
+    
+  videos[0] = new Movie( this, "KAFFE.mov" );
+  videos[1] = new Movie( this, "DANCE.mov" );
+  videos[2] = new Movie( this, "DICE1.mov" );
+  videos[3] = new Movie( this, "DICE2.mov" );
+  videos[4] = new Movie( this, "CHAIR.mov" );
+  
+  images[0] = loadImage ("KAFFE.jpg");
+  images[1] = loadImage ("DANCE.jpg");
+  images[2] = loadImage ("DICE1.jpg");
+  images[3] = loadImage ("DICE2.jpg");
+  images[4] = loadImage ("CHAIR.jpg");
+}
