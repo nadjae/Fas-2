@@ -1,16 +1,111 @@
 // ALLA TILLSTÅND/METODER
 
-void drawSplashScreen(){
-  background( 128 );
-  
-  textSize( textSize );
-  textAlign( CENTER );
-  
-  text( "Splash screen", width/2, height/2 );
+void showVideo() { 
+  background (255);
+  imageMode(CENTER);
+  image(nowPlaying, width/3,height/2, 700, 500); 
+}
+
+void introUI(){
+  textAlign(CENTER);
+  textSize(100);
+  text("Välkommen", width/2, height/2);
 }
 
 void drawUI(){
-  background( 255 );
-  strokeWeight( 10 );
-  ellipse( mouseX, mouseY, 25, 25 );
+  
+  // Rita ut "knappar"
+  strokeWeight( 2 );
+  stroke( r, g, b );
+  fill( r, g, b, 127 );
+  
+  imageMode(CENTER);
+  image(images[0], buttonX, buttonY1, 150, 100);
+  
+  image(images[1], buttonX, buttonY2, 150, 100);
+  
+  image(images[2], buttonX, buttonY3, 150, 100);
+  
+  image(images[3], buttonX, buttonY4, 150, 100);
+  
+  println(buttonX,buttonX,buttonX,buttonX,buttonY1);
+  println(mouseX,mouseY);
+  
+  // Rita ut text på aktiva knappar
+  textSize( 16 );
+  textAlign( CENTER );
+  //text( videos[v].filename, width/2, 32 );
+  text( "Gör ditt val!", width/2, 32 );
+  
+  //Knappmarkörer
+  fill(1);
+  strokeWeight( 1 );
+  textSize( 10 );
+  textAlign( CENTER );
+
+
+    text( "How to " + playingName(), buttonX, buttonY1 - 55 );
+
+    text( "How to " + playingName(), buttonX, buttonY2 - 55 );
+
+    text( "How to " + playingName(), buttonX, buttonY3 - 55);
+
+    text( "How to " + playingName(), buttonX, buttonY4 - 55);
+  
+  //text över video som spelas
+  fill (0);
+  textSize( 16 );
+  textAlign( CENTER );
+  text( "How to " + playingName(), width/3,height/2 - 260);
+
+}
+
+void exit(){
+   text("Tack", width/2,height/2); 
+}
+
+void playButton() {
+  noFill();
+  rectMode (CENTER);
+  rect (playX, playY, 50, 20);
+  
+  fill (0);
+  strokeWeight( 1 );
+  textSize( 10 );
+  textAlign( CENTER );
+  text("Play", playX, playY + 5);
+}
+
+void pauseButton() {
+  noFill();
+  rectMode (CENTER);
+  rect (playX, playY, 50, 20);
+  
+  fill (0);
+  strokeWeight( 1 );
+  textSize( 10 );
+  textAlign( CENTER );
+  text("Pause", playX, playY + 5);
+}
+
+String playingName (){
+  
+  if (videoState == 0) {
+     return "make coffe";
+  }
+    if (videoState == 1) {
+     return "dance (nice)";
+  }
+    if (videoState == 2) {
+     return "roll a dice";
+  }
+    if (videoState == 3) {
+     return "roll two dice";
+  } else 
+  
+  if (videoState == 4) {
+     return "pull out a chair (correctly)";
+  } else
+  
+  return "... well pic a video";
 }
